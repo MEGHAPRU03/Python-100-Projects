@@ -6,7 +6,7 @@ print('-'*174)
 
 print('Hint: All the words are computer related mainly programming languages and cloud names')
 # Step 1: Word list
-words = ['python', 'java', 'kotlin', 'javascript', 'ruby','javascript','R','snowflake','cloud','aws','gcp','amazon','redshift','pearl','c#']
+words = ['python', 'java', 'kotlin', 'javascript', 'ruby','javascript','R','snowflake','cloud','aws','gcp','amazon','redshift','pearl','C','HTML','XML']
 word = random.choice(words)
 
 # Step 2: Setup
@@ -51,4 +51,5 @@ while True:
     if lives == 0:
         print("\n💀 You lost! The word was:", word)
         break
+
 
