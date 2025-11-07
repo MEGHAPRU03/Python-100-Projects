@@ -11,12 +11,13 @@ word= random.choice(list(a.keys())).lower()
 print(f'Here comes the HINT!! \n HINT: {a[word]} ')
 
 for i in range(3,0,-1):
-    user_input = input()
+    user_input = input().lower()
     if(user_input==word):
         print(f'You guessed the word!! \n The word is {word}')
         break
     else:
         i=i-1
         print(f'Retry bro!! \n You have {i} attempts left')
+
 
 
