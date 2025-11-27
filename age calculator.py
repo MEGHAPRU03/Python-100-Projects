@@ -1,17 +1,28 @@
-from datetime import date
-def calculate_age(birth_year, birth_month, birth_day):
-    today = date.today()
-    age = today.year - birth_year
+from datetime import datetime, date
 
-    # If birthday hasn't happened yet this year, subtract 1
-    if (today.month, today.day) < (birth_month, birth_day):
-        age -= 1
+dob = datetime.strptime(input("Enter DOB (dd/mm/yyyy): "), "%d/%m/%Y").date()
+today = date.today()
 
-    return age
+# Years
+years = today.year - dob.year
+if (today.month, today.day) < (dob.month, dob.day):
+    years -= 1
 
-# Input
-by = int(input("Enter your birth year: "))
-bm = int(input("Enter your birth month: "))
-bd = int(input("Enter your birth day: "))
+# Months
+months = today.month - dob.month
+if today.day < dob.day:
+    months -= 1
+if months < 0:
+    months += 12
 
-print("Your Age is:", calculate_age(by, bm, bd), "years")
+# Days
+if today.day >= dob.day:
+    days = today.day - dob.day
+else:
+    # previous month days
+    prev_month = today.month - 1 or 12
+    prev_year = today.year if today.month != 1 else today.year - 1
+    days_in_prev_month = (date(prev_year, prev_month + 1, 1) - date(prev_year, prev_month, 1)).days
+    days = today.day + days_in_prev_month - dob.day
+
+print(f"Your Age: {years} years, {months} months, {days} days")
